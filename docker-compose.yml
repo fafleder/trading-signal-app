@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+  frontend:
+    build: ./frontend
+    environment:
+      - REACT_APP_SUPABASE_URL=${REACT_APP_SUPABASE_URL}
+      - REACT_APP_SUPABASE_ANON_KEY=${REACT_APP_SUPABASE_ANON_KEY}
+      - REACT_APP_SOCKET_URL=${REACT_APP_SOCKET_URL}
+      - REACT_APP_X_INSIGHTS_URL=${REACT_APP_X_INSIGHTS_URL}
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379" 

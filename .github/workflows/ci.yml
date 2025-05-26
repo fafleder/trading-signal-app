@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+      - name: Lint backend (flake8)
+        run: |
+          pip install flake8
+          cd backend
+          flake8 app || true
+      - name: Lint frontend (eslint)
+        run: |
+          cd frontend
+          npx eslint src || true
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+      - name: Test backend (placeholder)
+        run: echo "Add backend tests here"
+      - name: Test frontend (placeholder)
+        run: echo "Add frontend tests here" 

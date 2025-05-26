@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+supabase
+redis
+requests
+smart-money-concepts
+scikit-learn
+ta
+httpx
+python-dotenv
+openai 
