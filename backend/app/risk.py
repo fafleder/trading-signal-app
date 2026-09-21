@@ -4,7 +4,7 @@ from fastapi import APIRouter, Query
 from supabase import create_client, Client
 import numpy as np
 import ta
-from smart_money_concepts import smc
+from app.smart_money_concepts import smc
 
 # --- CONFIG ---
 def get_env_var(name, default=None, required=False):

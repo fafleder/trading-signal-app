@@ -1,0 +1,58 @@
+# Northflank Deployment Configuration for Trading Signal App
+# Free tier: 2 services, 1 vCPU, 1.5GB RAM, 5GB persistent volume
+
+services:
+  # Main API service (FastAPI)
+  - name: trading-signal-api
+    type: web
+    build:
+      dockerfilePath: ./Dockerfile
+      buildContext: ./backend
+    port: 8000
+    healthCheckPath: /health
+    resources:
+      cpu: 0.75
+      memory: 1024  # MB
+    volumes:
+      - name: trading-data
+        path: /app/data
+        size: 1  # GB
+    env:
+      - name: PYTHONPATH
+        value: /app
+      - name: REDIS_URL
+        value: "redis://redis:6379/0"
+    autoDeploy: true
+    buildOptions:
+      noCache: false
+
+  # Redis for caching and rate limiting
+  - name: redis
+    type: addon
+    addonType: redis
+    plan: free
+    version: "7"
+
+  # Optional: PostgreSQL addon (Northflank provides managed Postgres)
+  # Enable in dashboard: Addons → PostgreSQL → Free tier
+  # Then add DATABASE_URL to environment variables
+
+  # Worker for background analysis tasks
+  - name: trading-signal-worker
+    type: worker
+    build:
+      dockerfilePath: ./Dockerfile.worker
+      buildContext: ./backend
+    resources:
+      cpu: 0.25
+      memory: 512
+    env:
+      - name: PYTHONPATH
+        value: /app
+      - name: REDIS_URL
+        value: "redis://redis:6379/0"
+    autoDeploy: true
+
+volumes:
+  - name: trading-data
+    size: 1  # GB

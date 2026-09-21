@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 # OpenAPI docs available at /docs and /redoc when running the backend 
 
 import os
@@ -8,6 +10,7 @@ from typing import List, Optional
 from functools import wraps
 import logging
 import threading
+from dotenv import load_dotenv
 
 import requests
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Query, Depends, HTTPException, status, Request
@@ -16,10 +19,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from supabase import create_client, Client
 import redis
 import jwt
-from analysis import router as analysis_router
-from entries import router as entries_router
-from risk import router as risk_router
-from x_insights import router as x_insights_router
+from app.analysis import router as analysis_router
+from app.entries import router as entries_router
+from app.risk import router as risk_router
+from app.x_insights import router as x_insights_router
 
 # --- CONFIG ---
 def get_env_var(name, default=None, required=False):

@@ -4,7 +4,7 @@ from fastapi import APIRouter, Query
 from supabase import create_client, Client
 import requests
 import numpy as np
-from smart_money_concepts import smc
+from app.smart_money_concepts import smc
 from sklearn.linear_model import LinearRegression
 
 # --- CONFIG ---

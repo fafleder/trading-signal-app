@@ -3,7 +3,7 @@ from typing import List, Dict
 from fastapi import APIRouter, Query
 from supabase import create_client, Client
 import numpy as np
-from smart_money_concepts import smc
+from app.smart_money_concepts import smc
 
 # --- CONFIG ---
 def get_env_var(name, default=None, required=False):

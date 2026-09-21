@@ -3,7 +3,6 @@ uvicorn
 supabase
 redis
 requests
-smart-money-concepts
 scikit-learn
 ta
 httpx
