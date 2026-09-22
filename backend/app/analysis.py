@@ -36,28 +36,34 @@ def fetch_market_data(asset: str, timeframe: str, limit: int = 1000):
 
 def fetch_fred_series(series_id: str):
     url = f"https://api.stlouisfed.org/fred/series/observations?series_id={series_id}&api_key={FRED_API_KEY}&file_type=json"
-    r = requests.get(url)
-    if r.status_code == 200:
-        return r.json().get("observations", [])
+    try:
+        r = requests.get(url, timeout=10)
+        if r.status_code == 200:
+            return r.json().get("observations", [])
+    except Exception:
+        pass
     return []
 
 def fetch_news_sentiment(asset: str):
     url = f"https://newsapi.org/v2/everything?q={asset}&apiKey={NEWS_API_KEY}"
-    r = requests.get(url)
-    if r.status_code == 200:
-        articles = r.json().get("articles", [])
-        # Simple sentiment: count positive/negative words (placeholder)
-        pos, neg = 0, 0
-        for a in articles:
-            text = (a.get("title", "") + " " + a.get("description", "")).lower()
-            if "bullish" in text or "rally" in text or "gain" in text:
-                pos += 1
-            if "bearish" in text or "drop" in text or "loss" in text:
-                neg += 1
-        total = pos + neg
-        if total == 0:
-            return 0
-        return (pos - neg) / total
+    try:
+        r = requests.get(url, timeout=10)
+        if r.status_code == 200:
+            articles = r.json().get("articles", [])
+            # Simple sentiment: count positive/negative words (placeholder)
+            pos, neg = 0, 0
+            for a in articles:
+                text = (a.get("title", "") or "") + " " + (a.get("description", "") or "")
+                if "bullish" in text or "rally" in text or "gain" in text:
+                    pos += 1
+                if "bearish" in text or "drop" in text or "loss" in text:
+                    neg += 1
+            total = pos + neg
+            if total == 0:
+                return 0
+            return (pos - neg) / total
+    except Exception:
+        pass
     return 0
 
 def correlate_fundamental_with_price(fundamental: List[float], prices: List[float]):
