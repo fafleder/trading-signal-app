@@ -1,0 +1,79 @@
+stages:
+  - generate-signals
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+
+generate-ict-signals:
+  stage: generate-signals
+  image: python:3.11-slim
+  timeout: 10m
+  only:
+    - schedules
+    - web
+  variables:
+    TWELVE_DATA_API_KEY: $TWELVE_DATA_API_KEY
+    ALPHA_VANTAGE_API_KEY: $ALPHA_VANTAGE_API_KEY
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git
+    - pip install --upgrade pip
+    - pip install -r trading-signal-app/backend/requirements.txt
+    - pip install yfinance pandas numpy requests
+  script:
+    - cd trading-signal-app/backend
+    - python run_ict_enhanced.py
+    - |
+      if [ -f .cache/generated_signals.json ]; then
+        NEW_SIGNALS=$(python -c "
+import json
+with open('.cache/generated_signals.json') as f:
+    data = json.load(f)
+intraday = [s for s in data if s.get('setup_type') in ['intraday', 'scalp']]
+print(len(intraday))
+        ")
+        if [ "$NEW_SIGNALS" -gt 0 ]; then
+          python -c "
+import json
+import os
+import requests
+
+with open('.cache/generated_signals.json') as f:
+    signals = json.load(f)
+
+intraday = [s for s in signals if s.get('setup_type') in ['intraday', 'scalp']]
+
+if not intraday:
+    exit(0)
+
+bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
+chat_id = os.getenv('TELEGRAM_CHAT_ID')
+
+if not bot_token or not chat_id:
+    print('Telegram credentials not set')
+    exit(1)
+
+message = '🎯 <b>New ICT Signals Generated</b>\n\n'
+for s in intraday:
+    message += f\"<b>{s['asset']} {s['setup_type'].upper()} {s['direction'].upper()}</b>\n\"
+    message += f\"Entry: {s['entry_price']:.5f} | SL: {s['stop_loss']:.5f} | TP1: {s['take_profit_1']:.5f}\n\"
+    message += f\"R:R: {s['risk_reward']} | Conf: {s['confidence']:.0%}\n\"
+    message += f\"Exp: {s['expiration_time_est']} EST ({s.get('kill_zone', 'N/A')})\n\"
+    if s.get('notes'):
+        message += f\"Note: {s['notes']}\n\"
+    message += '\n'
+
+url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+requests.post(url, json={
+    'chat_id': chat_id,
+    'text': message,
+    'parse_mode': 'HTML'
+})
+print('Telegram sent')
+          "
+      fi
+  artifacts:
+    paths:
+      - trading-signal-app/backend/.cache/generated_signals.json
+    expire_in: 7 days
+  tags:
+    - docker
