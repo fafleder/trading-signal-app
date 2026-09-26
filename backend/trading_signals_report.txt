@@ -1,0 +1,774 @@
+================================================================================
+COMPREHENSIVE TRADING SIGNALS REPORT
+Generated: 2026-09-24 19:36:10 Africa/Addis_Ababa (EAT, UTC+3)
+Market Hours: US Market: 14:30-21:00 EAT | London: 10:00-19:00 EAT | Asian: 02:00-11:00 EAT | Crypto: 24/7 | Forex: 24/5
+Total Signals: 22
+Disclaimer: Generated via automated technical analysis. Not financial advice. Always use risk management.
+================================================================================
+
+================================================================================
+STOCK_INDEX SIGNALS (4 instruments)
+================================================================================
+
+--- S&P 500 (^GSPC) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 7701.26  |  Daily Change: -0.06%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 100.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 53.67  |  RSI(7): 55.79
+  MACD: Bullish (10.05), histogram expanding
+  MA Trend: Price above MA20 (7667.27), MA50 (7627.99)
+  ADX(14): 11.4
+  Stoch K/D: 71.3 / 79.7
+  BB Position: Middle band (66%)  |  BB Width: 0.0%
+  Volume: Low (0.2x avg)  |  ATR(14): 69.07
+
+Key Levels:
+  Resistance: R1=7779.22  R2=7816.7  R3=7973.03
+  Support:    S1=7507.77  S2=7313.92  S3=7167.64
+  Pivot: 7667.27
+
+Trade Setup:
+  Entry Zone: 7678.16
+  Stop Loss: 7558.47
+  Take Profit 1: 7779.22 (R:R 1:0.84)
+  Take Profit 2: 7816.7 (R:R 1:1.16)
+  Take Profit 3: 7973.03 (R:R 1:2.46)
+
+Market Context:
+  Sector: Broad Market
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bullish (5/5) | RSI neutral (53.7) | MACD bullish (histogram expanding) | Above BB middle - bullish bias | Weak/No trend (ADX < 20) | Low volume - lack of conviction
+
+
+--- NASDAQ 100 (^NDX) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 30409.62  |  Daily Change: -0.20%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 95.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 64.27  |  RSI(7): 74.08
+  MACD: Bullish (218.00), histogram expanding
+  MA Trend: Price above MA20 (29493.41), MA50 (29229.72)
+  ADX(14): 12.73
+  Stoch K/D: 84.8 / 89.5
+  BB Position: Upper band (101%)  |  BB Width: 0.0%
+  Volume: Low (0.1x avg)  |  ATR(14): 403.29
+
+Key Levels:
+  Resistance: R1=30706.23  R2=30706.23  R3=31320.36
+  Support:    S1=28586.68  S2=27176.03  S3=26632.51
+  Pivot: 29493.41
+
+Trade Setup:
+  Entry Zone: 30318.39
+  Stop Loss: 28586.68
+  Take Profit 1: 30706.23 (R:R 1:0.22)
+  Take Profit 2: 30706.23 (R:R 1:0.22)
+  Take Profit 3: 31320.36 (R:R 1:0.58)
+
+Market Context:
+  Sector: Technology
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (64.3) | MACD bullish (histogram expanding) | Near upper BB - overbought risk | Weak/No trend (ADX < 20) | Low volume - lack of conviction
+
+
+--- Dow Jones Industrial (^DJI) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 51368.91  |  Daily Change: -0.28%
+Direction: STRONGLY_BEARISH  |  Confidence: 95%  |  Strength: 95.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 37.31  |  RSI(7): 32.53
+  MACD: Bearish (-418.82), histogram contracting
+  MA Trend: Price below MA20 (52543.94), MA50 (52827.31)
+  ADX(14): 21.84
+  Stoch K/D: 9.3 / 18.6
+  BB Position: Lower band (11%)  |  BB Width: 0.0%
+  Volume: Low (0.4x avg)  |  ATR(14): 499.94
+
+Key Levels:
+  Resistance: R1=54057.08  R2=54744.33  R3=55839.21
+  Support:    S1=51030.8  S2=51124.02  S3=50101.54
+  Pivot: 52543.94
+
+Trade Setup:
+  Entry Zone: 51523.02
+  Stop Loss: 54057.08
+  Take Profit 1: 51124.02 (R:R 1:0.16)
+  Take Profit 2: 51124.02 (R:R 1:0.16)
+  Take Profit 3: 50101.54 (R:R 1:0.56)
+
+Market Context:
+  Sector: Broad Market
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bearish (5/5) | RSI bearish zone (37.3) | MACD bearish (histogram expanding) | Near lower BB - oversold bounce potential | Moderate trend (ADX: 21.8) | Low volume - lack of conviction
+
+
+--- Russell 2000 (^RUT) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 2830.57  |  Daily Change: -0.29%
+Direction: STRONGLY_BEARISH  |  Confidence: 95%  |  Strength: 95.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 32.77  |  RSI(7): 26.1
+  MACD: Bearish (-37.94), histogram contracting
+  MA Trend: Price below MA20 (2917.18), MA50 (2962.23)
+  ADX(14): 35.55
+  Stoch K/D: 11.9 / 15.4
+  BB Position: Lower band (10%)  |  BB Width: 0.0%
+  Volume: Low (0.0x avg)  |  ATR(14): 32.97
+
+Key Levels:
+  Resistance: R1=3025.48  R2=3069.71  R3=3131.1
+  Support:    S1=2808.88  S2=2810.75  S3=2754.54
+  Pivot: 2917.18
+
+Trade Setup:
+  Entry Zone: 2839.06
+  Stop Loss: 3025.48
+  Take Profit 1: 2810.75 (R:R 1:0.15)
+  Take Profit 2: 2810.75 (R:R 1:0.15)
+  Take Profit 3: 2754.54 (R:R 1:0.45)
+
+Market Context:
+  Sector: Broad Market
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bearish (5/5) | RSI bearish zone (32.8) | MACD bearish (histogram expanding) | Near lower BB - oversold bounce potential | Strong trend (ADX: 35.5) | Low volume - lack of conviction
+
+
+================================================================================
+STOCK SIGNALS (5 instruments)
+================================================================================
+
+--- Apple Inc. (AAPL) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 337.82  |  Daily Change: +0.24%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 100%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 63.59  |  RSI(7): 66.58
+  MACD: Bullish (6.17), histogram expanding
+  MA Trend: Price above MA20 (328.17), MA50 (321.71)
+  ADX(14): 19.61
+  Stoch K/D: 78.8 / 79.8
+  BB Position: Upper band (79%)  |  BB Width: 0.0%
+  Volume: Low (0.2x avg)  |  ATR(14): 6.96
+
+Key Levels:
+  Resistance: R1=345.34  R2=345.34  R3=352.25
+  Support:    S1=309.4  S2=300.0  S3=294.0
+  Pivot: 328.17
+
+Trade Setup:
+  Entry Zone: 336.81
+  Stop Loss: 311.35
+  Take Profit 1: 345.34 (R:R 1:0.34)
+  Take Profit 2: 345.34 (R:R 1:0.34)
+  Take Profit 3: 352.25 (R:R 1:0.61)
+
+Market Context:
+  Sector: Technology
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (63.6) | MACD bullish (histogram expanding) | Above BB middle - bullish bias | Weak/No trend (ADX < 20) | Low volume - lack of conviction
+
+
+--- NVIDIA Corp. (NVDA) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 223.59  |  Daily Change: -0.85%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 100.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 53.69  |  RSI(7): 53.71
+  MACD: Bullish (2.16), histogram expanding
+  MA Trend: Price above MA20 (221.85), MA50 (215.60)
+  ADX(14): 13.21
+  Stoch K/D: 56.8 / 66.0
+  BB Position: Middle band (58%)  |  BB Width: 0.0%
+  Volume: Low (0.3x avg)  |  ATR(14): 6.03
+
+Key Levels:
+  Resistance: R1=234.76  R2=234.76  R3=239.46
+  Support:    S1=208.93  S2=190.01  S3=186.21
+  Pivot: 221.85
+
+Trade Setup:
+  Entry Zone: 222.92
+  Stop Loss: 210.71
+  Take Profit 1: 234.76 (R:R 1:0.97)
+  Take Profit 2: 234.76 (R:R 1:0.97)
+  Take Profit 3: 239.46 (R:R 1:1.35)
+
+Market Context:
+  Sector: Technology
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bullish (5/5) | RSI neutral (53.7) | MACD bullish (histogram expanding) | Above BB middle - bullish bias | Weak/No trend (ADX < 20) | Low volume - lack of conviction
+
+
+--- Tesla Inc. (TSLA) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 379.81  |  Daily Change: -0.08%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 95.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 60.38  |  RSI(7): 68.67
+  MACD: Bullish (6.79), histogram expanding
+  MA Trend: Price above MA20 (364.91), MA50 (348.66)
+  ADX(14): 22.95
+  Stoch K/D: 80.5 / 82.3
+  BB Position: Upper band (90%)  |  BB Width: 0.0%
+  Volume: Low (0.4x avg)  |  ATR(14): 12.04
+
+Key Levels:
+  Resistance: R1=386.7  R2=395.31  R3=403.22
+  Support:    S1=345.2  S2=297.38  S3=291.43
+  Pivot: 364.91
+
+Trade Setup:
+  Entry Zone: 378.67
+  Stop Loss: 346.51
+  Take Profit 1: 386.7 (R:R 1:0.25)
+  Take Profit 2: 395.31 (R:R 1:0.52)
+  Take Profit 3: 403.22 (R:R 1:0.76)
+
+Market Context:
+  Sector: Broad Market
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (60.4) | MACD bullish (histogram expanding) | Near upper BB - overbought risk | Moderate trend (ADX: 22.9) | Low volume - lack of conviction
+
+
+--- Alphabet Inc. (GOOGL) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 341.39  |  Daily Change: +1.05%
+Direction: STRONGLY_BEARISH  |  Confidence: 77.5%  |  Strength: 55.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 47.83  |  RSI(7): 45.67
+  MACD: Bullish (0.05), histogram expanding
+  MA Trend: Price below MA20 (341.96), MA50 (344.48)
+  ADX(14): 13.33
+  Stoch K/D: 37.5 / 43.1
+  BB Position: Middle band (48%)  |  BB Width: 0.0%
+  Volume: Low (0.4x avg)  |  ATR(14): 8.94
+
+Key Levels:
+  Resistance: R1=364.17  R2=384.48  R3=392.17
+  Support:    S1=327.74  S2=314.9  S3=308.6
+  Pivot: 341.96
+
+Trade Setup:
+  Entry Zone: 342.41
+  Stop Loss: 354.79
+  Take Profit 1: 327.74 (R:R 1:1.18)
+  Take Profit 2: 314.9 (R:R 1:2.22)
+  Take Profit 3: 308.6 (R:R 1:2.73)
+
+Market Context:
+  Sector: Technology
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bearish (5/5) | RSI neutral (47.8) | MACD bullish (histogram expanding) | Below BB middle - bearish bias | Weak/No trend (ADX < 20) | Low volume - lack of conviction | Strong daily gain (+1.1%)
+
+
+--- Microsoft Corp. (MSFT) ---
+Market Status: 🟢 MARKET OPEN (US)
+Current Price: 495.6  |  Daily Change: -1.00%
+Direction: BULLISH  |  Confidence: 60.0%  |  Strength: 20.0%
+Timeframe: Intraday / Swing (1-5 days)
+
+Technical Indicators:
+  RSI(14): 52.86  |  RSI(7): 47.54
+  MACD: Bearish (5.55), histogram contracting
+  MA Trend: Price below MA20 (499.37), MA50 (473.46)
+  ADX(14): 31.16
+  Stoch K/D: 38.4 / 42.7
+  BB Position: Middle band (35%)  |  BB Width: 0.0%
+  Volume: Low (0.4x avg)  |  ATR(14): 10.98
+
+Key Levels:
+  Resistance: R1=517.78  R2=517.78  R3=528.14
+  Support:    S1=486.0  S2=377.39  S3=369.84
+  Pivot: 499.37
+
+Trade Setup:
+  Entry Zone: 494.11
+  Stop Loss: 479.13
+  Take Profit 1: 517.78 (R:R 1:1.58)
+  Take Profit 2: 517.78 (R:R 1:1.58)
+  Take Profit 3: 528.14 (R:R 1:2.27)
+
+Market Context:
+  Sector: Technology
+  Key Catalysts: Fed policy, Earnings, AI/Tech trends, Macro data
+
+Rationale: MA stack bullish (4/5) | RSI neutral (52.9) | MACD bearish (histogram expanding) | Below BB middle - bearish bias | Strong trend (ADX: 31.2) | Low volume - lack of conviction
+
+
+================================================================================
+CRYPTO SIGNALS (3 instruments)
+================================================================================
+
+--- Bitcoin (BTC-USD) ---
+Market Status: 🟢 MARKET OPEN (24/7)
+Current Price: 84583.22  |  Daily Change: +0.24%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 95.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 65.86  |  RSI(7): 67.46
+  MACD: Bullish (2502.33), histogram expanding
+  MA Trend: Price above MA20 (79759.38), MA50 (74931.59)
+  ADX(14): 44.12
+  Stoch K/D: 77.6 / 81.3
+  BB Position: Upper band (86%)  |  BB Width: 0.0%
+  Volume: Average (1.3x avg)  |  ATR(14): 2461.90
+
+Key Levels:
+  Resistance: R1=87363.76  R2=87363.76  R3=89111.03
+  Support:    S1=73150.51  S2=62487.7  S3=61237.95
+  Pivot: 79759.38
+
+Trade Setup:
+  Entry Zone: 84329.47
+  Stop Loss: 73150.51
+  Take Profit 1: 87363.76 (R:R 1:0.27)
+  Take Profit 2: 87363.76 (R:R 1:0.27)
+  Take Profit 3: 89111.03 (R:R 1:0.43)
+
+Market Context:
+  Sector: Digital Assets
+  Key Catalysts: ETF flows, Regulatory news, On-chain metrics, Macro liquidity
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (65.9) | MACD bullish (histogram expanding) | Near upper BB - overbought risk | Strong trend (ADX: 44.1)
+
+
+--- Ethereum (ETH-USD) ---
+Market Status: 🟢 MARKET OPEN (24/7)
+Current Price: 2690.7  |  Daily Change: +0.22%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 95.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 63.64  |  RSI(7): 63.1
+  MACD: Bullish (96.95), histogram expanding
+  MA Trend: Price above MA20 (2548.02), MA50 (2341.20)
+  ADX(14): 46.08
+  Stoch K/D: 74.3 / 78.5
+  BB Position: Upper band (82%)  |  BB Width: 0.0%
+  Volume: Average (0.9x avg)  |  ATR(14): 100.71
+
+Key Levels:
+  Resistance: R1=2805.5  R2=2805.5  R3=2861.61
+  Support:    S1=2327.81  S2=1852.84  S3=1815.78
+  Pivot: 2548.02
+
+Trade Setup:
+  Entry Zone: 2682.63
+  Stop Loss: 2327.81
+  Take Profit 1: 2805.5 (R:R 1:0.35)
+  Take Profit 2: 2805.5 (R:R 1:0.35)
+  Take Profit 3: 2861.61 (R:R 1:0.5)
+
+Market Context:
+  Sector: Digital Assets
+  Key Catalysts: ETF flows, Regulatory news, On-chain metrics, Macro liquidity
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (63.6) | MACD bullish (histogram expanding) | Near upper BB - overbought risk | Strong trend (ADX: 46.1)
+
+
+--- Solana (SOL-USD) ---
+Market Status: 🟢 MARKET OPEN (24/7)
+Current Price: 117.19  |  Daily Change: +1.93%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 100.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 65.79  |  RSI(7): 68.03
+  MACD: Bullish (5.51), histogram expanding
+  MA Trend: Price above MA20 (106.22), MA50 (95.76)
+  ADX(14): 44.45
+  Stoch K/D: 88.9 / 87.6
+  BB Position: Upper band (90%)  |  BB Width: 0.0%
+  Volume: Average (1.1x avg)  |  ATR(14): 4.92
+
+Key Levels:
+  Resistance: R1=120.05  R2=119.81  R3=122.2
+  Support:    S1=92.39  S2=72.31  S3=70.86
+  Pivot: 106.22
+
+Trade Setup:
+  Entry Zone: 116.84
+  Stop Loss: 92.39
+  Take Profit 1: 119.81 (R:R 1:0.12)
+  Take Profit 2: 119.81 (R:R 1:0.12)
+  Take Profit 3: 122.2 (R:R 1:0.22)
+
+Market Context:
+  Sector: Digital Assets
+  Key Catalysts: ETF flows, Regulatory news, On-chain metrics, Macro liquidity
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (65.8) | MACD bullish (histogram expanding) | Near upper BB - overbought risk | Strong trend (ADX: 44.5) | Strong daily gain (+1.9%)
+
+
+================================================================================
+FOREX SIGNALS (6 instruments)
+================================================================================
+
+--- USD/CHF (USDCHF=X) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 0.83  |  Daily Change: +0.78%
+Direction: STRONGLY_BULLISH  |  Confidence: 95%  |  Strength: 95.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 68.39  |  RSI(7): 76.0
+  MACD: Bullish (0.00), histogram expanding
+  MA Trend: Price above MA20 (0.81), MA50 (0.81)
+  ADX(14): 22.14
+  Stoch K/D: 89.6 / 78.5
+  BB Position: Upper band (96%)  |  BB Width: 0.0%
+  Volume: Average (1.0x avg)  |  ATR(14): 0.01
+
+Key Levels:
+  Resistance: R1=0.83  R2=0.83  R3=0.85
+  Support:    S1=0.8  S2=0.79  S3=0.78
+  Pivot: 0.81
+
+Trade Setup:
+  Entry Zone: 0.82
+  Stop Loss: 0.8
+  Take Profit 1: 0.83 (R:R 1:0.5)
+  Take Profit 2: 0.83 (R:R 1:0.5)
+  Take Profit 3: 0.85 (R:R 1:1.5)
+
+Market Context:
+  Sector: Currencies
+  Key Catalysts: Central bank policy, Inflation data, Employment, Geopolitics
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (68.4) | MACD bullish (histogram expanding) | Near upper BB - overbought risk | Moderate trend (ADX: 22.1)
+
+
+--- EUR/USD (EURUSD=X) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 1.14  |  Daily Change: -0.56%
+Direction: STRONGLY_BEARISH  |  Confidence: 87.5%  |  Strength: 75.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 25.53  |  RSI(7): 11.24
+  MACD: Bearish (-0.00), histogram contracting
+  MA Trend: Price below MA20 (1.16), MA50 (1.15)
+  ADX(14): 30.97
+  Stoch K/D: 7.1 / 15.2
+  BB Position: Lower band (-7%)  |  BB Width: 0.0%
+  Volume: Average (1.0x avg)  |  ATR(14): 0.01
+
+Key Levels:
+  Resistance: R1=1.17  R2=1.17  R3=1.19
+  Support:    S1=1.14  S2=1.14  S3=1.11
+  Pivot: 1.16
+
+Trade Setup:
+  Entry Zone: 1.14
+  Stop Loss: 1.17
+  Take Profit 1: 1.14 (R:R 1:0.0)
+  Take Profit 2: 1.14 (R:R 1:0.0)
+  Take Profit 3: 1.11 (R:R 1:1.0)
+
+Market Context:
+  Sector: Currencies
+  Key Catalysts: Central bank policy, Inflation data, Employment, Geopolitics
+
+Rationale: MA stack bearish (5/5) | RSI oversold (25.5) - bounce potential | MACD bearish (histogram expanding) | Near lower BB - oversold bounce potential | Strong trend (ADX: 31.0)
+
+
+--- GBP/USD (GBPUSD=X) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 1.32  |  Daily Change: -0.83%
+Direction: STRONGLY_BEARISH  |  Confidence: 87.5%  |  Strength: 75.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 25.84  |  RSI(7): 14.36
+  MACD: Bearish (-0.01), histogram contracting
+  MA Trend: Price below MA20 (1.35), MA50 (1.35)
+  ADX(14): 27.56
+  Stoch K/D: 6.1 / 18.1
+  BB Position: Lower band (-16%)  |  BB Width: 0.0%
+  Volume: Average (1.0x avg)  |  ATR(14): 0.01
+
+Key Levels:
+  Resistance: R1=1.37  R2=1.37  R3=1.39
+  Support:    S1=1.32  S2=1.32  S3=1.29
+  Pivot: 1.35
+
+Trade Setup:
+  Entry Zone: 1.33
+  Stop Loss: 1.37
+  Take Profit 1: 1.32 (R:R 1:0.25)
+  Take Profit 2: 1.32 (R:R 1:0.25)
+  Take Profit 3: 1.29 (R:R 1:1.0)
+
+Market Context:
+  Sector: Currencies
+  Key Catalysts: Central bank policy, Inflation data, Employment, Geopolitics
+
+Rationale: MA stack bearish (5/5) | RSI oversold (25.8) - bounce potential | MACD bearish (histogram expanding) | Near lower BB - oversold bounce potential | Strong trend (ADX: 27.6)
+
+
+--- USD/CAD (USDCAD=X) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 1.41  |  Daily Change: +0.46%
+Direction: STRONGLY_BULLISH  |  Confidence: 87.5%  |  Strength: 75.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 71.99  |  RSI(7): 87.61
+  MACD: Bullish (0.00), histogram expanding
+  MA Trend: Price above MA20 (1.39), MA50 (1.39)
+  ADX(14): 27.79
+  Stoch K/D: 95.1 / 90.1
+  BB Position: Upper band (109%)  |  BB Width: 0.0%
+  Volume: Average (1.0x avg)  |  ATR(14): 0.01
+
+Key Levels:
+  Resistance: R1=1.41  R2=1.41  R3=1.44
+  Support:    S1=1.37  S2=1.37  S3=1.35
+  Pivot: 1.39
+
+Trade Setup:
+  Entry Zone: 1.41
+  Stop Loss: 1.37
+  Take Profit 1: 1.41 (R:R 1:0.0)
+  Take Profit 2: 1.41 (R:R 1:0.0)
+  Take Profit 3: 1.44 (R:R 1:0.75)
+
+Market Context:
+  Sector: Currencies
+  Key Catalysts: Central bank policy, Inflation data, Employment, Geopolitics
+
+Rationale: MA stack bullish (5/5) | RSI overbought (72.0) | MACD bullish (histogram expanding) | Near upper BB - overbought risk | Strong trend (ADX: 27.8)
+
+
+--- AUD/USD (AUDUSD=X) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 0.7  |  Daily Change: -1.14%
+Direction: STRONGLY_BEARISH  |  Confidence: 85.0%  |  Strength: 70.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 33.86  |  RSI(7): 19.7
+  MACD: Bearish (-0.00), histogram contracting
+  MA Trend: Price below MA20 (0.72), MA50 (0.71)
+  ADX(14): 23.64
+  Stoch K/D: 9.1 / 22.9
+  BB Position: Lower band (-13%)  |  BB Width: 0.0%
+  Volume: Average (1.0x avg)  |  ATR(14): 0.00
+
+Key Levels:
+  Resistance: R1=0.73  R2=0.72  R3=0.74
+  Support:    S1=0.7  S2=0.69  S3=0.68
+  Pivot: 0.72
+
+Trade Setup:
+  Entry Zone: 0.71
+  Stop Loss: 0.73
+  Take Profit 1: 0.7 (R:R 1:0.5)
+  Take Profit 2: 0.69 (R:R 1:1.0)
+  Take Profit 3: 0.68 (R:R 1:1.5)
+
+Market Context:
+  Sector: Currencies
+  Key Catalysts: Central bank policy, Inflation data, Employment, Geopolitics
+
+Rationale: MA stack bearish (4/5) | RSI bearish zone (33.9) | MACD bearish (histogram expanding) | Near lower BB - oversold bounce potential | Moderate trend (ADX: 23.6) | Strong daily loss (-1.1%)
+
+
+--- USD/JPY (USDJPY=X) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 158.69  |  Daily Change: +0.78%
+Direction: STRONGLY_BULLISH  |  Confidence: 70.0%  |  Strength: 40.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 58.34  |  RSI(7): 73.45
+  MACD: Bullish (-0.43), histogram expanding
+  MA Trend: Price above MA20 (156.57), MA50 (158.78)
+  ADX(14): 33.57
+  Stoch K/D: 94.4 / 83.8
+  BB Position: Upper band (73%)  |  BB Width: 0.0%
+  Volume: Average (1.0x avg)  |  ATR(14): 1.46
+
+Key Levels:
+  Resistance: R1=161.11  R2=163.98  R3=167.26
+  Support:    S1=152.02  S2=152.9  S3=149.84
+  Pivot: 156.57
+
+Trade Setup:
+  Entry Zone: 158.21
+  Stop Loss: 152.02
+  Take Profit 1: 160.38 (R:R 1:0.35)
+  Take Profit 2: 163.98 (R:R 1:0.93)
+  Take Profit 3: 167.26 (R:R 1:1.46)
+
+Market Context:
+  Sector: Currencies
+  Key Catalysts: Central bank policy, Inflation data, Employment, Geopolitics
+
+Rationale: MA stack bullish (3/5) | RSI neutral (58.3) | MACD bullish (histogram expanding) | Above BB middle - bullish bias | Strong trend (ADX: 33.6)
+
+
+================================================================================
+COMMODITY SIGNALS (4 instruments)
+================================================================================
+
+--- Brent Crude (BZ=F) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 105.77  |  Daily Change: +2.61%
+Direction: STRONGLY_BULLISH  |  Confidence: 87.5%  |  Strength: 75.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 61.94  |  RSI(7): 62.62
+  MACD: Bearish (3.49), histogram contracting
+  MA Trend: Price above MA20 (100.02), MA50 (93.34)
+  ADX(14): 25.96
+  Stoch K/D: 74.0 / 56.0
+  BB Position: Upper band (74%)  |  BB Width: 0.0%
+  Volume: Average (0.8x avg)  |  ATR(14): 4.66
+
+Key Levels:
+  Resistance: R1=111.87  R2=110.19  R3=112.39
+  Support:    S1=86.29  S2=78.13  S3=76.57
+  Pivot: 100.02
+
+Trade Setup:
+  Entry Zone: 105.45
+  Stop Loss: 88.17
+  Take Profit 1: 110.19 (R:R 1:0.27)
+  Take Profit 2: 110.19 (R:R 1:0.27)
+  Take Profit 3: 112.39 (R:R 1:0.4)
+
+Market Context:
+  Sector: Commodities
+  Key Catalysts: Supply/demand, Geopolitics, Dollar strength, Inventory data
+
+Rationale: MA stack bullish (5/5) | RSI bullish zone (61.9) | MACD bearish (histogram expanding) | Above BB middle - bullish bias | Strong trend (ADX: 26.0) | Strong daily gain (+2.6%)
+
+
+--- Gold (GC=F) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 4308.7  |  Daily Change: -0.22%
+Direction: STRONGLY_BEARISH  |  Confidence: 77.5%  |  Strength: 55.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 41.05  |  RSI(7): 30.83
+  MACD: Bearish (-19.73), histogram contracting
+  MA Trend: Price below MA20 (4425.15), MA50 (4348.18)
+  ADX(14): 14.95
+  Stoch K/D: 13.4 / 21.8
+  BB Position: Lower band (15%)  |  BB Width: 0.0%
+  Volume: Average (0.7x avg)  |  ATR(14): 100.50
+
+Key Levels:
+  Resistance: R1=4697.7  R2=4755.0  R3=4850.1
+  Support:    S1=4260.84  S2=3963.0  S3=3883.74
+  Pivot: 4425.15
+
+Trade Setup:
+  Entry Zone: 4321.63
+  Stop Loss: 4589.46
+  Take Profit 1: 4273.3 (R:R 1:0.18)
+  Take Profit 2: 3963.0 (R:R 1:1.34)
+  Take Profit 3: 3883.74 (R:R 1:1.63)
+
+Market Context:
+  Sector: Commodities
+  Key Catalysts: Supply/demand, Geopolitics, Dollar strength, Inventory data
+
+Rationale: MA stack bearish (4/5) | RSI neutral (41.1) | MACD bearish (histogram expanding) | Near lower BB - oversold bounce potential | Weak/No trend (ADX < 20)
+
+
+--- Silver (SI=F) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 64.18  |  Daily Change: -0.31%
+Direction: STRONGLY_BEARISH  |  Confidence: 72.5%  |  Strength: 45.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 46.67  |  RSI(7): 40.91
+  MACD: Bearish (0.04), histogram contracting
+  MA Trend: Price below MA20 (65.57), MA50 (63.48)
+  ADX(14): 12.86
+  Stoch K/D: 22.9 / 35.6
+  BB Position: Lower band (27%)  |  BB Width: 0.0%
+  Volume: High (10.5x avg)  |  ATR(14): 1.59
+
+Key Levels:
+  Resistance: R1=71.16  R2=71.16  R3=72.58
+  Support:    S1=62.55  S2=55.01  S3=53.91
+  Pivot: 65.57
+
+Trade Setup:
+  Entry Zone: 64.38
+  Stop Loss: 68.6
+  Take Profit 1: 63.02 (R:R 1:0.32)
+  Take Profit 2: 55.01 (R:R 1:2.22)
+  Take Profit 3: 53.91 (R:R 1:2.48)
+
+Market Context:
+  Sector: Commodities
+  Key Catalysts: Supply/demand, Geopolitics, Dollar strength, Inventory data
+
+Rationale: MA stack bearish (3/5) | RSI neutral (46.7) | MACD bearish (histogram expanding) | Below BB middle - bearish bias | Weak/No trend (ADX < 20) | High volume (10.5x avg) - conviction
+
+
+--- Crude Oil WTI (CL=F) ---
+Market Status: 🟢 MARKET OPEN (24/5)
+Current Price: 94.77  |  Daily Change: +2.83%
+Direction: BULLISH  |  Confidence: 62.5%  |  Strength: 25.0%
+Timeframe: Swing (3-10 days)
+
+Technical Indicators:
+  RSI(14): 52.82  |  RSI(7): 45.51
+  MACD: Bearish (2.89), histogram contracting
+  MA Trend: Price below MA20 (94.87), MA50 (87.78)
+  ADX(14): 28.48
+  Stoch K/D: 33.6 / 28.4
+  BB Position: Middle band (50%)  |  BB Width: 0.0%
+  Volume: Average (0.9x avg)  |  ATR(14): 4.66
+
+Key Levels:
+  Resistance: R1=107.53  R2=106.75  R3=108.88
+  Support:    S1=80.65  S2=74.24  S3=72.76
+  Pivot: 94.87
+
+Trade Setup:
+  Entry Zone: 94.49
+  Stop Loss: 82.22
+  Take Profit 1: 106.75 (R:R 1:1.0)
+  Take Profit 2: 106.75 (R:R 1:1.0)
+  Take Profit 3: 108.88 (R:R 1:1.17)
+
+Market Context:
+  Sector: Commodities
+  Key Catalysts: Supply/demand, Geopolitics, Dollar strength, Inventory data
+
+Rationale: MA stack bullish (4/5) | RSI neutral (52.8) | MACD bearish (histogram expanding) | Below BB middle - bearish bias | Strong trend (ADX: 28.5) | Strong daily gain (+2.8%)

@@ -1,0 +1,41 @@
+{
+  "scan_interval": 60,
+  "risk": {
+    "max_daily_dd_pct": 2.0,
+    "max_portfolio_heat_pct": 5.0,
+    "max_position_risk_pct": 1.0,
+    "max_correlation": 0.7,
+    "max_positions": 5,
+    "max_positions_per_symbol": 1
+  },
+  "trailing": {
+    "enabled": true,
+    "activation_rr": 1.0,
+    "distance_pct": 0.5,
+    "step_pct": 0.1
+  },
+  "partials": {
+    "tp1_pct": 50,
+    "tp2_pct": 30,
+    "runner_pct": 20
+  },
+  "magic_base": 123456,
+  "sessions": {
+    "london": {"enabled": true, "priority": 1},
+    "ny": {"enabled": true, "priority": 2},
+    "asian": {"enabled": false, "priority": 3}
+  },
+  "symbols": {
+    "XAUUSD": {"enabled": true, "min_rr": 2.0, "max_spread": 50},
+    "NASDAQ": {"enabled": true, "min_rr": 2.0, "max_spread": 200},
+    "EURUSD": {"enabled": true, "min_rr": 2.0, "max_spread": 20},
+    "GBPUSD": {"enabled": true, "min_rr": 2.0, "max_spread": 20}
+  },
+  "news_filter": {
+    "enabled": true,
+    "high_impact_minutes_before": 30,
+    "high_impact_minutes_after": 30,
+    "medium_impact_minutes_before": 15,
+    "medium_impact_minutes_after": 15
+  }
+}

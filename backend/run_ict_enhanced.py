@@ -21,7 +21,7 @@ from mt5_fetcher import MT5DataFetcher
 # API data fetcher (for cloud deployment)
 from api_fetcher import APIDataFetcher
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 CACHE_DIR = Path(__file__).parent / '.cache'
@@ -86,38 +86,38 @@ OTE_LEVELS = {
 # Assets with their specs
 ASSETS = {
     "XAUUSD": {
-        "symbol": "XAUUSD",
+        "symbol": "XAUUSDm",
         "market": "FOREX",
         "pip_size": 0.01,
         "typical_spread": 0.3,
-        "killzone_priority": [Session.LONDON, Session.NY_AM],
+        "killzone_priority": [Session.LONDON, Session.NY_AM, Session.NY_PM],
         "scalp_target_pips": 8,
         "intraday_target_pips": 25,
     },
     "NASDAQ": {
-        "symbol": "NQ",
+        "symbol": "USTECm",
         "market": "INDEX",
         "pip_size": 0.25,
         "typical_spread": 0.5,
-        "killzone_priority": [Session.NY_AM, Session.LONDON],
+        "killzone_priority": [Session.NY_AM, Session.LONDON, Session.NY_PM],
         "scalp_target_points": 15,
         "intraday_target_points": 50,
     },
     "EURUSD": {
-        "symbol": "EURUSD",
+        "symbol": "EURUSDm",
         "market": "FOREX",
         "pip_size": 0.0001,
         "typical_spread": 0.6,
-        "killzone_priority": [Session.LONDON, Session.NY_AM],
+        "killzone_priority": [Session.LONDON, Session.NY_AM, Session.NY_PM],
         "scalp_target_pips": 5,
         "intraday_target_pips": 20,
     },
     "GBPUSD": {
-        "symbol": "GBPUSD",
+        "symbol": "GBPUSDm",
         "market": "FOREX",
         "pip_size": 0.0001,
         "typical_spread": 0.8,
-        "killzone_priority": [Session.LONDON, Session.NY_AM],
+        "killzone_priority": [Session.LONDON, Session.NY_AM, Session.NY_PM],
         "scalp_target_pips": 6,
         "intraday_target_pips": 25,
     },
@@ -190,6 +190,7 @@ class TradeSetup:
     risk_reward: float
     confidence: float
     kill_zone: Session
+    session: Session  # Alias for kill_zone, for trading_bot compatibility
     macro_window: Optional[str]
     silver_bullet: Optional[str]
     entry_time_est: str
@@ -200,6 +201,7 @@ class TradeSetup:
     pd_array: PDArray
     ote_level: Optional[float] = None
     notes: str = ""
+    expires_at: Optional[datetime] = None  # For trading_bot compatibility
 
 # ============================================================
 # UTILITY FUNCTIONS
@@ -605,56 +607,57 @@ def determine_daily_bias(daily_candles: List[Candle]) -> Tuple[Bias, Dict]:
 # SIGNAL GENERATION PER SETUP TYPE
 # ============================================================
 
-def generate_swing_signals(asset: str, asset_config: Dict, daily_candles: List[Candle], 
+def generate_swing_signals(asset: str, asset_config: Dict, daily_candles: List[Candle],
                           h4_candles: List[Candle], est_now: datetime) -> List[TradeSetup]:
     """Generate swing trade setups (4H/Daily)"""
     setups = []
-    
+
     # Daily bias
     bias, bias_info = determine_daily_bias(daily_candles)
     if bias == Bias.NEUTRAL:
         return setups
-    
+
     # 4H structure for entry
     if len(h4_candles) < 50:
         return setups
-    
+
     h4_highs = [c.high for c in h4_candles]
     h4_lows = [c.low for c in h4_candles]
     h4_closes = [c.close for c in h4_candles]
     h4_opens = [c.open for c in h4_candles]
-    
+
     h4_structure = market_structure(h4_highs, h4_lows, h4_closes)
-    
+
     # Check alignment with daily bias
     if (bias == Bias.BULLISH and h4_structure.trend != "bullish") or \
        (bias == Bias.BEARISH and h4_structure.trend != "bearish"):
         return setups  # Not aligned
-    
+
     # Liquidity targets
     pools = liquidity_pools(h4_highs, h4_lows, h4_closes)
     pools.extend(previous_session_levels(h4_highs, h4_lows))
-    
+
     # PD Arrays
     obs = order_blocks(h4_highs, h4_lows, h4_opens, h4_closes)
     fvgs = fair_value_gaps(h4_highs, h4_lows, h4_closes, [c.volume for c in h4_candles])
     pd_arrays = obs + fvgs
-    
+
     direction = "long" if bias == Bias.BULLISH else "short"
-    target_pools = [p for p in pools if (p.type == "buy_side" and direction == "long") or 
+    pd_direction = "bullish" if bias == Bias.BULLISH else "bearish"
+    target_pools = [p for p in pools if (p.type == "buy_side" and direction == "long") or
                                              (p.type == "sell_side" and direction == "short")]
-    
+
     if not target_pools:
         return setups
-    
+
     # Find best liquidity target
     target_pool = max(target_pools, key=lambda p: p.strength)
-    
+
     # Find PD array for entry
-    aligned_pd = [pa for pa in pd_arrays if pa.direction == direction]
+    aligned_pd = [pa for pa in pd_arrays if pa.direction == pd_direction]
     if not aligned_pd:
         return setups
-    
+
     # Check OTE confluence
     # Need a sweep and displacement to anchor Fibonacci
     if h4_structure.last_choch or h4_structure.last_bos:
@@ -664,26 +667,26 @@ def generate_swing_signals(asset: str, asset_config: Dict, daily_candles: List[C
         has_ote, ote_pd, ote_entry = check_ote_confluence(ote_levels, aligned_pd, direction)
     else:
         has_ote, ote_pd, ote_entry = False, None, None
-    
+
     entry_pd = ote_pd if has_ote else aligned_pd[-1]
     entry_price = entry_pd.price_bottom if direction == "long" else entry_pd.price_top
     stop_loss = entry_pd.price_bottom - (entry_pd.price_top - entry_pd.price_bottom) if direction == "long" \
                 else entry_pd.price_top + (entry_pd.price_top - entry_pd.price_bottom)
-    
+
     # Targets
     tp1 = target_pool.price
     range_size = abs(target_pool.price - entry_price)
     tp2 = entry_price + 1.5 * range_size if direction == "long" else entry_price - 1.5 * range_size
-    
+
     risk = abs(entry_price - stop_loss)
     reward = abs(tp1 - entry_price)
     rr = reward / risk if risk > 0 else 0
-    
-    if rr < 1.5:
+
+    if rr < 2.0:
         return setups
-    
+
     expiration_time, max_hold = calculate_expiration(est_now, SetupType.SWING, Session.NY_AM)
-    
+
     setups.append(TradeSetup(
         asset=asset,
         setup_type=SetupType.SWING,
@@ -708,7 +711,7 @@ def generate_swing_signals(asset: str, asset_config: Dict, daily_candles: List[C
         ote_level=ote_entry,
         notes=f"Swing setup aligned with daily {bias.value} bias. {'OTE confluence' if has_ote else 'PD array entry'}."
     ))
-    
+
     return setups
 
 def generate_intraday_signals(asset: str, asset_config: Dict, candles_15m: List[Candle], 
@@ -808,7 +811,29 @@ def generate_intraday_signals(asset: str, asset_config: Dict, candles_15m: List[
     if not sweep_occurred:
         logger.info(f"  ❌ No sweep occurred for {asset}. min_low={min(recent_lows):.5f}, max_high={max(recent_highs):.5f}")
         return setups
-    
+
+    # Displacement on 5M after sweep
+    displacement_price = h5_closes[-1]
+
+    # 1M/5M PD Arrays for entry
+    obs_5m = order_blocks(h5_highs, h5_lows, h5_opens, h5_closes)
+    fvgs_5m = fair_value_gaps(h5_highs, h5_lows, h5_closes, [c.volume for c in candles_5m])
+    pd_arrays_5m = obs_5m + fvgs_5m
+
+    logger.info(f"  📊 {asset} PD arrays detail:")
+    for pa in pd_arrays_5m:
+        logger.info(f"    {pa.type}: dir={pa.direction}, top={pa.price_top:.5f}, bottom={pa.price_bottom:.5f}, strength={pa.strength:.2f}")
+
+    aligned_pd = [pa for pa in pd_arrays_5m if 
+                       (pa.direction == "bullish" and direction == "long") or
+                       (pa.direction == "bearish" and direction == "short")]
+
+    logger.info(f"  📊 {asset} PD arrays: {len(pd_arrays_5m)} total, {len(aligned_pd)} aligned")
+
+    if not aligned_pd:
+        logger.info(f"  ❌ No aligned PD arrays for {asset}")
+        return setups
+
     # Check for MSS/CHoCH on 5M in bias direction
     mss_confirmed = False
     if direction == "long" and h5_structure.last_choch and "bullish" in h5_structure.last_choch["type"]:
@@ -818,35 +843,19 @@ def generate_intraday_signals(asset: str, asset_config: Dict, candles_15m: List[
     elif h5_structure.last_bos and ((direction == "long" and "bullish" in h5_structure.last_bos["type"]) or
                                       (direction == "short" and "bearish" in h5_structure.last_bos["type"])):
         mss_confirmed = True
-    
+    # Relaxed: if we have sweep + displacement (strong move) + aligned PD arrays, allow entry
+    elif len(aligned_pd) > 0:
+        # Check if there's displacement from sweep to current price
+        displacement_pct = abs(displacement_price - sweep_price) / sweep_price * 100
+        if displacement_pct > 0.1:  # At least 0.1% displacement
+            mss_confirmed = True
+            logger.info(f"  ✅ MSS confirmed via displacement: {displacement_pct:.2f}%")
+
     logger.info(f"  📊 {asset} MSS confirmed: {mss_confirmed}")
-    
+
     if not mss_confirmed:
         logger.info(f"  ❌ No MSS for {asset}")
         return setups
-    
-    # Displacement on 5M after sweep
-    displacement_price = h5_closes[-1]
-    
-    # 1M/5M PD Arrays for entry
-    obs_5m = order_blocks(h5_highs, h5_lows, h5_opens, h5_closes)
-    fvgs_5m = fair_value_gaps(h5_highs, h5_lows, h5_closes, [c.volume for c in candles_5m])
-    pd_arrays_5m = obs_5m + fvgs_5m
-    
-    logger.info(f"  📊 {asset} PD arrays detail:")
-    for pa in pd_arrays_5m:
-        logger.info(f"    {pa.type}: dir={pa.direction}, top={pa.price_top:.5f}, bottom={pa.price_bottom:.5f}, strength={pa.strength:.2f}")
-    
-    aligned_pd = [pa for pa in pd_arrays_5m if 
-                       (pa.direction == "bullish" and direction == "long") or
-                       (pa.direction == "bearish" and direction == "short")]
-    
-    logger.info(f"  📊 {asset} PD arrays: {len(pd_arrays_5m)} total, {len(aligned_pd)} aligned")
-    
-    if not aligned_pd:
-        logger.info(f"  ❌ No aligned PD arrays for {asset}")
-        return setups
-    
     # OTE on 5M
     ote_levels = calculate_ote_levels(sweep_price, displacement_price, direction)
     has_ote, ote_pd, ote_entry = check_ote_confluence(ote_levels, aligned_pd, direction)
@@ -918,12 +927,12 @@ def generate_intraday_signals(asset: str, asset_config: Dict, candles_15m: List[
     risk = abs(entry_price - stop_loss)
     reward = abs(tp1 - entry_price)
     rr = reward / risk if risk > 0 else 0
-    
+
     logger.info(f"  📊 {asset} entry={entry_price:.5f}, sl={stop_loss:.5f}, tp1={tp1:.5f}, rr={rr:.2f}")
-    
-    if rr < 1.5:
-        logger.info(f"  ❌ RR too low for {asset}: {rr:.2f}")
-        return setups
+
+    if rr < 2.0:
+            logger.info(f"  ❌ RR too low for {asset}: {rr:.2f}")
+            return setups
     
     expiration_time, max_hold = calculate_expiration(est_now, SetupType.INTRADAY, kz_session)
     
@@ -937,29 +946,30 @@ def generate_intraday_signals(asset: str, asset_config: Dict, candles_15m: List[
     confidence = min(confidence, 0.95)
     
     setups.append(TradeSetup(
-        asset=asset,
-        setup_type=SetupType.INTRADAY,
-        bias=intraday_bias,
-        direction=direction,
-        entry_price=round(entry_price, 5),
-        stop_loss=round(stop_loss, 5),
-        take_profit_1=round(tp1, 5),
-        take_profit_2=round(tp2, 5),
-        invalidation_price=round(invalidation_price, 5),  # Use sweep level as invalidation
-        risk_reward=round(rr, 2),
-        confidence=confidence,
-        kill_zone=kz_session,
-        macro_window=macro_name,
-        silver_bullet=sb_name,
-        entry_time_est=est_now.strftime("%H:%M"),
-        expiration_time_est=expiration_time,
-        max_hold_minutes=max_hold,
-        structure={"15m": {"trend": h15_structure.trend}, "5m": {"trend": h5_structure.trend, "mss": mss_confirmed}},
-        liquidity_target=target_pool if target_pools_15m else None,
-        pd_array=entry_pd,
-        ote_level=ote_entry,
-        notes=f"Intraday {kz_session.value} setup. {'Macro window' if in_macro else ''} {'Silver Bullet' if in_sb else ''}. {'OTE+PD confluence' if has_ote else 'PD array entry'}."
-    ))
+            asset=asset,
+            setup_type=SetupType.INTRADAY,
+            bias=intraday_bias,
+            direction=direction,
+            entry_price=round(entry_price, 5),
+            stop_loss=round(stop_loss, 5),
+            take_profit_1=round(tp1, 5),
+            take_profit_2=round(tp2, 5),
+            invalidation_price=round(invalidation_price, 5),  # Use sweep level as invalidation
+            risk_reward=round(rr, 2),
+            confidence=confidence,
+            kill_zone=kz_session,
+            session=kz_session,  # For trading_bot compatibility
+            macro_window=macro_name,
+            silver_bullet=sb_name,
+            entry_time_est=est_now.strftime("%H:%M"),
+            expiration_time_est=expiration_time,
+            max_hold_minutes=max_hold,
+            structure={"15m": {"trend": h15_structure.trend}, "5m": {"trend": h5_structure.trend, "mss": mss_confirmed}},
+            liquidity_target=target_pool if target_pools_15m else None,
+            pd_array=entry_pd,
+            ote_level=ote_entry,
+            notes=f"Intraday {kz_session.value} setup. {'Macro window' if in_macro else ''} {'Silver Bullet' if in_sb else ''}. {'OTE+PD confluence' if has_ote else 'PD array entry'}."
+        ))
     
     return setups
 
@@ -1358,14 +1368,16 @@ async def generate_all_signals():
         for s in scalp_setups:
             new_signals.append(asdict(s))
     
-    # Merge with existing (replace by asset+setup_type+timestamp)
-    for new_sig in new_signals:
-        # Remove old signal for same asset, setup_type
-        all_signals = [s for s in all_signals if not (
-            s.get('asset') == new_sig['asset'] and 
-            s.get('setup_type') == new_sig['setup_type']
-        )]
-        all_signals.append(new_sig)
+    # Merge with existing (replace by asset+setup_type+entry_price)
+        for new_sig in new_signals:
+            # Remove old signal for same asset, setup_type, AND entry_price (rounded)
+            new_entry = round(new_sig['entry_price'], 5)
+            all_signals = [s for s in all_signals if not (
+                s.get('asset') == new_sig['asset'] and 
+                s.get('setup_type') == new_sig['setup_type'] and
+                round(s.get('entry_price', 0), 5) == new_entry
+            )]
+            all_signals.append(new_sig)
     
     save_signals(all_signals)
     logger.info(f'🎯 Signal generation complete. Generated {len(new_signals)} new setups. Total: {len(all_signals)}')

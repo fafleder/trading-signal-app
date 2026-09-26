@@ -7,7 +7,7 @@ import MetaTrader5 as mt5
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from pathlib import Path
 import logging
 
@@ -181,6 +181,139 @@ def get_mt5_candles(asset: str, timeframe: str, count: int = 1000) -> Optional[L
         return None
     
     return df.to_dict('records')
+
+
+# Add trading execution methods to MT5DataFetcher
+def place_order(self, request: Dict) -> Optional[Dict]:
+    """Place an order via MT5"""
+    if not self.initialize():
+        return None
+    
+    result = mt5.order_send(request)
+    if result is None:
+        logger.error(f"Order send failed: {mt5.last_error()}")
+        return None
+    
+    return {
+        'retcode': result.retcode,
+        'deal': result.deal,
+        'order': result.order,
+        'volume': result.volume,
+        'price': result.price,
+        'comment': result.comment,
+        'request_id': result.request_id
+    }
+
+def close_position(self, ticket: int, volume: float, side: int) -> Optional[Dict]:
+    """Close a position"""
+    if not self.initialize():
+        return None
+    
+    position = mt5.positions_get(ticket=ticket)
+    if not position:
+        logger.warning(f"Position {ticket} not found")
+        return None
+    
+    pos = position[0]
+    request = {
+        "action": mt5.TRADE_ACTION_DEAL,
+        "symbol": pos.symbol,
+        "volume": volume,
+        "type": side,  # 0=buy, 1=sell (opposite of position)
+        "position": ticket,
+        "price": mt5.symbol_info_tick(pos.symbol).bid if side == 0 else mt5.symbol_info_tick(pos.symbol).ask,
+        "magic": pos.magic,
+        "comment": "ICT Bot Close",
+        "type_filling": mt5.ORDER_FILLING_IOC,
+    }
+    
+    result = mt5.order_send(request)
+    if result is None:
+        logger.error(f"Close failed: {mt5.last_error()}")
+        return None
+    
+    return {
+        'retcode': result.retcode,
+        'deal': result.deal,
+        'order': result.order,
+    }
+
+def modify_position(self, ticket: int, sl: float, tp: float) -> Optional[Dict]:
+    """Modify position SL/TP"""
+    if not self.initialize():
+        return None
+    
+    position = mt5.positions_get(ticket=ticket)
+    if not position:
+        return None
+    
+    pos = position[0]
+    request = {
+        "action": mt5.TRADE_ACTION_SLTP,
+        "position": ticket,
+        "sl": sl,
+        "tp": tp,
+        "symbol": pos.symbol,
+    }
+    
+    result = mt5.order_send(request)
+    if result is None:
+        logger.error(f"Modify failed: {mt5.last_error()}")
+        return None
+    
+    return {'retcode': result.retcode}
+
+def get_account_info(self) -> Optional[Any]:
+    """Get account info"""
+    if not self.initialize():
+        return None
+    return mt5.account_info()
+
+def get_symbol_info(self, symbol: str) -> Optional[Dict]:
+    """Get symbol info for position sizing"""
+    if not self.initialize():
+        return None
+    
+    info = mt5.symbol_info(symbol)
+    if info is None:
+        return None
+    
+    return {
+        'trade_tick_value': info.trade_tick_value,
+        'trade_tick_size': info.trade_tick_size,
+        'point': info.point,
+        'digits': info.digits,
+        'spread': info.spread,
+        'volume_min': info.volume_min,
+        'volume_max': info.volume_max,
+        'volume_step': info.volume_step,
+        'margin_initial': info.margin_initial,
+    }
+
+def get_symbol_tick(self, symbol: str) -> Optional[Dict]:
+    """Get current tick for a symbol"""
+    if not self.initialize():
+        return None
+    
+    tick = mt5.symbol_info_tick(symbol)
+    if tick is None:
+        return None
+    
+    return {
+        'bid': tick.bid,
+        'ask': tick.ask,
+        'last': tick.last,
+        'time': datetime.fromtimestamp(tick.time),
+        'volume': tick.volume,
+    }
+
+# Bind methods to class
+MT5DataFetcher.place_order = place_order
+MT5DataFetcher.close_position = close_position
+MT5DataFetcher.modify_position = modify_position
+MT5DataFetcher.get_account_info = get_account_info
+MT5DataFetcher.get_symbol_info = get_symbol_info
+MT5DataFetcher.get_symbol_tick = get_symbol_tick
 
 
 if __name__ == '__main__':
